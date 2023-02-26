@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     list-style: none;
     text-decoration: none;
-    font-family: "Google Sans Regular", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
 }
 
@@ -14,7 +16,7 @@ body {
 header {
     width: 100%;
     height: 80px;
-    background: #05B7AB;
+    background: #2093c3;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -46,12 +48,12 @@ header {
 }
 
 .nav-bar ul li a:hover {
-    color: #05B7AB;
+    color: #2093c3;
     background: #fefefe;
 }
 
 .nav-bar ul li a.active {
-    color: #05B7AB;
+    color: #2093c3;
     background: #fefefe;
 }
 
@@ -88,7 +90,7 @@ header {
         left: 0;
         right: 0;
         width: 100vw;
-        background: #05B7AB;
+        background: #2093c3;
         transition: 0.5s;
         overflow: hidden;
     }
@@ -115,4 +117,91 @@ header {
     }
         
     
+}
+
+.img-container {
+    box-shadow: 5px 5px 7px rgba(0,0,0,0.3);
+    width: 198vh;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.img-text {
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+
+}
+
+.img-text p {
+    padding-top: 3%;
+}
+
+.readmore {
+    margin-top: 5%;
+    border-radius: 20px;
+    width: 30%;
+    padding: 2%;
+    cursor: pointer;
+    background: #55aaff;
+    border: none;
+    color: #fefefe;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.7);
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card1 {
+    background-color:#2093c3;
+    padding: 3%;
+    color: #fefefe;
+}
+
+.card2 {
+    
+    padding: 3%;
+    color: #fefefe;
+    background-color:#44b0ac;
+}
+
+.card3 {
+    background-color:#3bbdc2;
+    padding: 3%;
+    color: #fefefe;
+}
+
+.card4 {
+    background-color:#65c9d4;
+    padding: 3%;
+    color: #fefefe;
+}
+
+.card1 p {
+    padding-top: 2%;
+}
+
+.card2 p {
+    padding-top: 2%;
+}
+
+.card3 p {
+    padding-top: 2%;
+}
+
+.card4 p {
+    padding-top: 2%;
 }
