@@ -97,12 +97,13 @@ header {
 
     .nav-bar.active {
         height: 450px;
+        z-index: 50;
     }
 
     .nav-bar ul {
         display: block;
         width: fit-content;
-        margin: 80px auto 0 auto;
+        margin: 50px auto 0 auto;
         text-align: center;
         transition: 0.5s;
         opacity: 0;
