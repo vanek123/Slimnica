@@ -207,28 +207,29 @@ header {
     padding-top: 2%;
 }
 
-.why {
+/* ABOUT US */
+
+.about {
     display: flex;
-    width: 100%;
-    height: 500px;
-    justify-content: center;
-    color: #fefefe;
-    background-color: #fefefe;
+    padding: 48px;
 }
 
-.aboutUs {
-    align-self: center;
-    background-color: #2093c3;
-    width: 30%;
+.about_text {
+    width: 50%;
     padding: 2%;
+    position: relative;
 }
 
-
-.img-container2 {
-    align-self: center;
-    justify-content: center;
+.about_image {
+    width: 50%;
+    overflow: hidden;
+    position: relative;
 }
 
+.about_image img {
+    width: 100%;
+    object-fit: cover;
+}
 /* FOOTER */
 
 .footer {
@@ -312,5 +313,4 @@ header {
 
 .contact_info li {
     padding: 5%;
-    color: #7e7e7e;
 }
