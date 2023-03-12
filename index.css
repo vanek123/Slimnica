@@ -253,18 +253,22 @@ header {
 
 .footer_logo {
     position: absolute;
-    bottom: 30%;
-    left: 20%;
+    bottom: 15%;
+    left: 15%;
     width: 25%;
     font-size: 18px;
 }
 
-.footer_logo h3 {
-    padding: 5%;
+.footer_logo img {
+    width: 100%;
 }
 
-.footer_logo li {
-    padding: 5%;
+.under_logo {
+    position: absolute;
+    left: 17%;
+    font-size: 18px;
+    width: 22%;
+    bottom: 35%;
 }
 
 .quick_links {

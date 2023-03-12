@@ -73,7 +73,7 @@ body {
 
 .form .fields .input-field {
     display: flex;
-    width: calc(100% / 3 -15px);
+    width: calc(100% / 3 - 15px);
     flex-direction: column;
     margin: 4px 0;
 }
