@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +17,13 @@
             <div class="form login">
                 <span class="title">Admin Login</span>
 
-                <form action="#">
+                <form action="login.php" method="POST">
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your email" required>
+                        <input type="text" placeholder="Enter your email" name="epasts">
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Enter your password" required>
+                        <input type="password" class="password" placeholder="Enter your password" name="parole">
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
@@ -37,7 +38,7 @@
                     </div>
 
                     <div class="input-field button">
-                        <input type="button" value="Login Now">
+                        <input type="submit" name="login" value="Login Now">
                     </div>
                 </form>
                 
