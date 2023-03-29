@@ -72,13 +72,13 @@
                     <div class="input-field">
                         <select class="select" placeholder="Choose your gender" name="gender">
                             <option value="" disabled selected hidden>Choose your gender</option>
-                            <option value="volvo">Male</option>
-                            <option value="saab">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                         <i class="uil uil-mars"></i>
                     </div>
-                    <div class="input-field" name="phone_num">
-                        <input type="text" placeholder="Enter your phone number">
+                    <div class="input-field" >
+                        <input type="number" name="phone_num" placeholder="Enter your phone number" onkeypress="this.value=this.value.substring(0,7)" id="myInput">
                         <i class="uil uil-phone"></i>
                     </div>
                     <div class="input-field">
@@ -106,7 +106,7 @@
                     </div>
 
                     <div class="input-field button">
-                        <input type="submit" value="Register Now">
+                        <input type="submit" name="register" value="Register Now">
                     </div>
                 </form>
                 

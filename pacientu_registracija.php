@@ -14,11 +14,11 @@ $phone_num = "";
 $errors = array();
 
 //REGISTER USER
-if (isset($_POST['reg_user'])) {
+if (isset($_POST['register'])) {
     //receive all input values from the form
     $name = $_POST['name'];
     $surname = $_POST['surname'];
-    $personas_kods = $_POST['personas_kods']
+    $personas_kods = $_POST['personas_kods'];
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $email = $_POST['email'];
@@ -41,7 +41,7 @@ if (isset($_POST['reg_user'])) {
     
     // first check the database to make sure
     // a user does not already exist with the same username and/or email
-    $patient_check_query = "SELECT * FROM pacienti WHERE personas_kods='$personas_kods' OR email='$email' OR talrunis='$phone_num' LIMIT 1";
+    $patient_check_query = "SELECT * FROM pacienti WHERE personas_kods='$personas_kods' OR epasts='$email' OR talrunis='$phone_num' LIMIT 1";
     //$result = mysqli_query($DBconnection, $user_check_query);
     $result = $DBconnection->query($patient_check_query);
     $patient = $result->fetch();
@@ -52,14 +52,17 @@ if (isset($_POST['reg_user'])) {
     } elseif ($patient) {
         if ($patient['personas_kods'] === $personas_kods || $patient['email'] === $email || $patient['talrunis'] === $phone_num) {
             array_push($errors, "Personal code, email or phone number taken!");
-            header("location: pacienti_login?activity=pers_code_or_email_or_phone_number_taken");
+            header("location: pacienti_login.php?activity=pers_code_or_email_or_phone_number_taken");
             exit();
             }
-    } elseif (preg_match('/^[0-9]{8}+$/', $phone_num)) {
-        header("location: pacienti_login?activity=char");
+    } elseif (preg_match('/^[0-9]{9}+$/', $phone_num)) {
+        header("location: pacienti_login.php?activity=wrong_phone_number_format");
+        exit();
+    } elseif (preg_match('/^[0-9]{13}+$/', $personas_kods)) {
+        header("location: pacienti_login.php?activity=personal_code_wrong_format");
         exit();
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("location: pacienti_login?activity=email_format_is_wrong");
+        header("location: pacienti_login.php?activity=email_format_is_wrong");
         exit();
     }
 
@@ -69,7 +72,7 @@ if (isset($_POST['reg_user'])) {
         $query = "INSERT INTO pacienti (vards, uzvards, epasts, parole, talrunis, dzimums, dzimdiena, personas_kods)
                   VALUES('$name', '$surname', '$email', '$passwordMD5', '$phone_num', '$gender', '$dob', '$personas_kods')";
         $DBconnection->query($query);
-        $_SESSION['name'] = $name;
+        $_SESSION['email'] = $email;
         header('location: index.php?activity=success');
         exit();
         }

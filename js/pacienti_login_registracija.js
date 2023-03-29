@@ -32,3 +32,8 @@ signUp.addEventListener("click", ( ) => {
 login.addEventListener("click", ( ) => {
     container.classList.remove("active");
 });
+
+window.onload = () => {
+    const myInput = document.getElementById('myInput');
+    myInput.onpaste = e => e.preventDefault();
+   }
