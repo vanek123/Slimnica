@@ -33,7 +33,22 @@ login.addEventListener("click", ( ) => {
     container.classList.remove("active");
 });
 
+//prevent pasting in phone number and personal code inputs
 window.onload = () => {
-    const myInput = document.getElementById('myInput');
-    myInput.onpaste = e => e.preventDefault();
+    const phoneNumber = document.getElementById('phoneNumber');
+    phoneNumber.onpaste = e => e.preventDefault();
    }
+
+   window.onload = () => {
+    const personalCode = document.getElementById('personalCode');
+    personalCode.onpaste = e => e.preventDefault();
+   }
+
+//adding '-' after 6th letter in personal code input
+var input = document.getElementById('personalCode');
+input.oninput = function() {
+    var str = document.getElementById('personalCode');
+    if (str.value.length > 6) {
+        document.getElementById('personalCode').value =  str.value.substring(0, 5) + '-' + str.value.substring(5, 20).replace(/-/g,'');
+    }
+}

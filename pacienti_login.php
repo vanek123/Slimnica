@@ -62,7 +62,7 @@
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your personal code" name="personas_kods">
+                        <input type="number" placeholder="Enter your personal code" name="personas_kods" onkeypress="this.value=this.value.substring(0,11)" id="personalCode">
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
@@ -78,7 +78,7 @@
                         <i class="uil uil-mars"></i>
                     </div>
                     <div class="input-field" >
-                        <input type="number" name="phone_num" placeholder="Enter your phone number" onkeypress="this.value=this.value.substring(0,7)" id="myInput">
+                        <input type="number" name="phone_num" placeholder="Enter your phone number" onkeypress="this.value=this.value.substring(0,7)" id="phoneNumber">
                         <i class="uil uil-phone"></i>
                     </div>
                     <div class="input-field">
