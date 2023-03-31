@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/admin_panel.css">
 </head>
 <body>
@@ -21,10 +21,10 @@
                 <tr>
                     <th> Name </th>
                     <th> Surname </th>
-                    <th> E-pasts </th>
-                    <th> Parole </th>
-                    <th> Talrunis </th>
-                    <th> Specialitate </th>
+                    <th> Email </th>
+                    <th> Password </th>
+                    <th> Phone Number </th>
+                    <th> Specialty </th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -37,7 +37,7 @@
                     <td> 64gb</td>
                     <td> 8gb</td>
                     <td> 64gb</td>
-                    <td><button class="btn btn-primary"> edit</button></td>
+                    <td><button class="btn btn-primary"> Edit</button></td>
                     <td><button class="btn btn-danger"> Delete</button></td>
                 </tr>
             </tbody>
