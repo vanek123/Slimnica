@@ -36,7 +36,7 @@
     }
     else
     {
-        header('location: pacienti_login.php?activity=username_or_password_not_set');
+        header('location: index.php?activity=username_or_password_not_set');
         exit();
     }
 ?>

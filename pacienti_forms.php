@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/pacienti_login.css">
+    <link rel="stylesheet" href="css/pacienti_forms.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <title>Login</title>
     <script defer src="js/pacienti_login_registracija.js"></script>
@@ -39,6 +39,9 @@
                     <div class="input-field button">
                         <input type="submit" name="login" value="Login Now">
                     </div>
+                    <div class="input-field button">
+                        <input type="submit" name="Cancel" value="Cancel">
+                    </div>
                 </form>
                 
                 <div class="login-signup">
@@ -62,7 +65,7 @@
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="number" placeholder="Enter your personal code" name="personas_kods" onkeypress="this.value=this.value.substring(0,11)" id="personalCode">
+                        <input type="number" placeholder="Enter your personal code" name="personas_kods" onkeypress="this.value=this.value.substring(0,10)" id="personalCode">
                         <i class="uil uil-user"></i>
                     </div>
                     <div class="input-field">
@@ -108,6 +111,10 @@
                     <div class="input-field button">
                         <input type="submit" name="register" value="Register Now">
                     </div>
+                    <div class="input-field button">
+                        <input type="submit" name="Cancel" value="Cancel">
+                    </div>
+                    
                 </form>
                 
                 <div class="login-signup">

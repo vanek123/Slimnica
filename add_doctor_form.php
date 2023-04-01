@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
     <title>Add doctor form</title>
+    <link rel="stylesheet" href="css/add_doctor_form.css">
 </head>
 <body>
     <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #4070f4">
@@ -44,7 +45,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">Phone Number:</label>
-                    <input type="text" class="form-control" name="phone_number" placeholder="22345678">
+                    <input type="number" class="form-control" name="phone_number" placeholder="22345678">
                 </div>
             </div>
 
@@ -63,8 +64,8 @@
             </div>
 
             <div>
-                <button type="submit" name="save" class="btn btn-success">Save</button>
-                <a href="admin_panel.php" class="btn btn-danger">Cancel</a>
+                <button type="submit" name="submit" class="btn btn-success">Save</button>
+                <button name="cancel" class="btn btn-danger">Cancel</button>
             </div>
         </form>
     </div>

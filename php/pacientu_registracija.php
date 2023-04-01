@@ -47,39 +47,49 @@ if (isset($_POST['register'])) {
     $patient = $result->fetch();
 
     if (empty($name) || empty($surname) || empty($personas_kods) || empty($dob) || empty($gender) || empty($email) || empty($phone_num) || empty($password) || empty($confirm_pass)) {
-        header("location: pacienti_login.php?activity=empty");
+        array_push($errors, "The fields are empty!");
+        header("location: pacienti_forms.php?activity=empty");
         exit();
     } elseif ($patient) {
-        if ($patient['personas_kods'] === $personas_kods || $patient['email'] === $email || $patient['talrunis'] === $phone_num) {
+        if ($patient['personas_kods'] === $personas_kods || $patient['epasts'] === $email || $patient['talrunis'] === $phone_num) {
             array_push($errors, "Personal code, email or phone number taken!");
-            header("location: pacienti_login.php?activity=pers_code_or_email_or_phone_number_taken");
+            header("location: pacienti_forms.php?activity=pers_code_or_email_or_phone_number_taken");
             exit();
             }
     } elseif (preg_match('/^[0-9]{9}+$/', $phone_num)) {
-        header("location: pacienti_login.php?activity=wrong_phone_number_format");
+        array_push($errors, "Wrong phone number format!");
+        header("location: pacienti_forms.php?activity=wrong_phone_number_format");
         exit();
-    } elseif (preg_match('/^[0-9]{13}+$/', $personas_kods)) {
-        header("location: pacienti_login.php?activity=personal_code_wrong_format");
+    } elseif (preg_match('/^[0-9]{12}+$/', $personas_kods)) {
+        array_push($errors, "Wrong personal code format!");
+        header("location: pacienti_forms.php?activity=personal_code_wrong_format");
         exit();
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("location: pacienti_login.php?activity=email_format_is_wrong");
+        array_push($errors, "Wrong email format!");
+        header("location: pacienti_forms.php?activity=email_format_is_wrong");
+        exit();
+    } elseif ($_POST['password'] != $_POST['confirm_pass']) {
+        array_push($errors, "Passwords do not match!");
+        header("location: pacienti_forms.php?activity=passwords_do_not_match");
         exit();
     }
 
-        if (COUNT($errors) == 0) {
-        $passwordMD5 = md5($password); //encrypt the password beofre saving in the database
+    //FInally, register user if there are no earrors in the form
+        if (COUNT($errors) === 0) {
+            $passwordMD5 = md5($password); //encrypt the password beofre saving in the database
 
-        $query = "INSERT INTO pacienti (vards, uzvards, epasts, parole, talrunis, dzimums, dzimdiena, personas_kods)
+            $query = "INSERT INTO pacienti (vards, uzvards, epasts, parole, talrunis, dzimums, dzimdiena, personas_kods)
                   VALUES('$name', '$surname', '$email', '$passwordMD5', '$phone_num', '$gender', '$dob', '$personas_kods')";
-        $DBconnection->query($query);
-        $_SESSION['email'] = $email;
-        header('location: index.php?activity=success');
-        exit();
+            $DBconnection->query($query);
+            $_SESSION['email'] = $email;
+            header('location: index.php?activity=success');
+            exit();
+        
         }
     
 }
 
-    //FInally, register user if there are no earrors in the form
+    
     
 else 
 {
