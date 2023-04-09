@@ -1,3 +1,7 @@
+<?php
+    include 'connection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,40 +14,62 @@
     <link rel="stylesheet" href="css/admin_panel.css">
 </head>
 <body>
-    <div class="container doc-table">
-        <div class="headers">
-            <h2 class="table-title">Manage Doctors</h2>
-            <button class="btn add">Add doctor</button>
-        </div>
-
-        <table class="table table-striped">
+    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #4070f4">
+        Hello, Admin!
+    </nav>
+    <div class="container">
+        <button class="btn btn-primary my-2"><a href="add_doctor_form.php" class="text-light">Add doctor</a></button>
+        <table class="table">
             <thead>
                 <tr>
-                    <th> Name </th>
-                    <th> Surname </th>
-                    <th> Email </th>
-                    <th> Password </th>
-                    <th> Phone Number </th>
-                    <th> Specialty </th>
-                    <th></th>
-                    <th></th>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Specialty</th>
+                    <th scope="col">Operations</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td> Real me 8</td>
-                    <td> 18000</td>
-                    <td> 8g</td>
-                    <td> 64gb</td>
-                    <td> 8gb</td>
-                    <td> 64gb</td>
-                    <td><button class="btn btn-primary"> Edit</button></td>
-                    <td><button class="btn btn-danger"> Delete</button></td>
-                </tr>
+
+            <?php
+
+            $SQL = "SELECT * FROM `arsti` ";
+            $result = $DBconnection->query($SQL);
+            if($result) {
+                while($row = $result->fetch()) {
+                    $id = $row['arsts_id'];
+                    $vards = $row['vards'];
+                    $uzvards = $row['uzvards'];
+                    $epasts = $row['epasts'];
+                    $parole = $row['parole'];
+                    $talrunis = $row['talrunis'];
+                    $specialitate = $row['specialitate'];
+                    echo '<tr>
+                            <th scope="row">'.$id.'</th>
+                            <td>'.$vards.'</td>
+                            <td>'.$uzvards.'</td>
+                            <td>'.$epasts.'</td>
+                            <td>'.$parole.'</td>
+                            <td>'.$talrunis.'</td>
+                            <td>'.$specialitate.'</td>
+                            <td> 
+                            <button class="btn btn-primary"><a href="update_doctor.php?updateid='.$id.'" class="text-light">Update</a></button>
+                            <button class="btn btn-danger"><a href="delete_doctor.php?deleteid='.$id.'" class="text-light">Delete</a></button>
+                            </td>
+                           </tr> ';
+                }
+            }
+
+            ?>
+
             </tbody>
-
         </table>
-
     </div>
+
+    
+
 </body>
 </html>
