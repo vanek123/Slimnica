@@ -20,11 +20,14 @@ if (isset($_POST['register'])) {
     $surname = $_POST['surname'];
     $personas_kods = $_POST['personas_kods'];
     $dob = $_POST['dob'];
+    $dobYear = date('Y', strtotime($dob));
     $gender = $_POST['gender'];
     $email = $_POST['email'];
     $phone_num = $_POST['phone_num'];
     $password = $_POST['password'];
     $confirm_pass = $_POST['confirm_pass'];
+
+ 
 
     //form validation: ensure that the form is correctly filled...
     //by adding (array_push()) corresponding errors into $errors array
@@ -72,7 +75,25 @@ if (isset($_POST['register'])) {
         array_push($errors, "Passwords do not match!");
         header("location: pacienti_forms.php?activity=passwords_do_not_match");
         exit();
+        // check is user input date correct
+    } elseif (strtotime($dob) === false) {
+        array_push($errors, "Invalid date!");
+        header("location: pacienti_forms.php?activity=invalid_dob");
+        exit();
+    } elseif ($dobYear < 1900 || $dobYear > 2200) {
+        array_push($errors, "Too old or too young!");
+        header("location: pacienti_forms.php?activity=wrong_dob");
+        exit();
+    } elseif (time() < strtotime('+18 years', strtotime($dob))) {
+        array_push($errors, "Not 18+ years!");
+        header("location: pacienti_forms.php?activity=age");
+        exit();
     }
+
+   
+
+
+
 
     //FInally, register user if there are no earrors in the form
         if (COUNT($errors) === 0) {
