@@ -59,11 +59,19 @@ if (isset($_POST['register'])) {
             header("location: pacienti_forms.php?activity=pers_code_or_email_or_phone_number_taken");
             exit();
             }
-    } elseif (preg_match('/^[0-9]{9}+$/', $phone_num)) {
+    } elseif (!preg_match("/^([a-zA-Z' ]+)$/", $name)) {
+        array_push($errors, "Wrong phone number format!");
+        header("location: pacienti_forms.php?activity=wrong_first_name_format");
+        exit();
+    } elseif (!preg_match("/^([a-zA-Z' ]+)$/", $surname)) {
+        array_push($errors, "Wrong phone number format!");
+        header("location: pacienti_forms.php?activity=wrong_last_name_format");
+        exit();
+    } elseif (!preg_match('/^[0-7]{8}+$/', $phone_num)) {
         array_push($errors, "Wrong phone number format!");
         header("location: pacienti_forms.php?activity=wrong_phone_number_format");
         exit();
-    } elseif (preg_match('/^[0-9]{12}+$/', $personas_kods)) {
+    } elseif (!preg_match('/^[0-10]{11}+$/', $personas_kods)) {
         array_push($errors, "Wrong personal code format!");
         header("location: pacienti_forms.php?activity=personal_code_wrong_format");
         exit();
@@ -75,7 +83,7 @@ if (isset($_POST['register'])) {
         array_push($errors, "Passwords do not match!");
         header("location: pacienti_forms.php?activity=passwords_do_not_match");
         exit();
-        // check is user input date correct
+        // check if user input date is correct
     } elseif (strtotime($dob) === false) {
         array_push($errors, "Invalid date!");
         header("location: pacienti_forms.php?activity=invalid_dob");

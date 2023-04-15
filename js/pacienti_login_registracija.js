@@ -33,13 +33,14 @@ login.addEventListener("click", ( ) => {
     container.classList.remove("active");
 });
 
-//prevent pasting in phone number and personal code inputs
+//prevent pasting in phone number input
 window.onload = () => {
     const phoneNumber = document.getElementById('phoneNumber');
     phoneNumber.onpaste = e => e.preventDefault();
    }
 
-   window.onload = () => {
+//prevent pasting in personal code input
+window.onload = () => {
     const personalCode = document.getElementById('personalCode');
     personalCode.onpaste = e => e.preventDefault();
    };

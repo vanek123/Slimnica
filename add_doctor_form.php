@@ -30,40 +30,40 @@
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">First Name:</label>
-                    <input type="text" class="form-control" name="first_name" placeholder="John">
+                    <input type="text" class="form-control" name="first_name" placeholder="">
                 </div>
 
                 <div class="col">
                     <label class="form-label">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name" placeholder="Jones">
+                    <input type="text" class="form-control" name="last_name" placeholder="">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">E-mail:</label>
-                    <input type="text" class="form-control" name="email" placeholder="example@rls.lv">
+                    <input type="text" class="form-control" name="email" placeholder="">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">Phone Number:</label>
-                    <input type="number" class="form-control" name="phone_number" placeholder="22345678">
+                    <input type="number" class="form-control" name="phone_number" placeholder="" onkeypress="this.value=this.value.substring(0,7)">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">Password:</label>
-                    <input type="text" class="form-control" name="password" placeholder="*******">
+                    <input type="password" class="form-control" name="password" placeholder="">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">Specialty:</label>
-                    <input type="text" class="form-control" name="specialty" placeholder="Dentist">
+                    <input type="text" class="form-control" name="specialty" placeholder="">
                 </div>
             </div>
 

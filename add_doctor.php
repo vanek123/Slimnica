@@ -28,6 +28,18 @@
                 header("location: add_doctor_form.php?activity=email_or_phone_number_taken");
                 exit();
                 }
+        } elseif (!preg_match("/^([a-zA-Z' ]+)$/", $name)) {
+            array_push($errors, "Wrong phone number format!");
+            header("location: pacienti_forms.php?activity=wrong_first_name_format");
+            exit();
+        } elseif (!preg_match("/^([a-zA-Z' ]+)$/", $surname)) {
+            array_push($errors, "Wrong phone number format!");
+            header("location: pacienti_forms.php?activity=wrong_last_name_format");
+            exit();
+        } elseif (!preg_match('/^[0-7]{8}+$/', $phone_num)) {
+            array_push($errors, "Wrong phone number format!");
+            header("location: pacienti_forms.php?activity=wrong_phone_number_format");
+            exit();
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         array_push($errors, "Wrong email format!");
         header("location: add_doctor_form.php?activity=email_format_is_wrong");
