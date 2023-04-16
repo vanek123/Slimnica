@@ -17,19 +17,19 @@
        $row = $result->fetch();
 
        if (empty($email) || empty($userPassword)) {
-        header("location: pacienti_login.php?activity=login_empty");
+        header("location: pacienti_forms.php?activity=login_empty");
         exit();
         }
     elseif ($row) {
             $_SESSION['pacients_id'] = $row['pacients_id'];
-            $_SESSION['email'] = $row['email'];
+            $_SESSION['epasts'] = $row['epasts'];
 
         header('location: index.php?activity=login_successful');
         exit();
         }    
 
         else {
-            header('location: pacienti_login.php?activity=incorrect_user_login_credentials');
+            header('location: pacienti_forms.php?activity=incorrect_user_login_credentials');
             exit(); 
         }
 

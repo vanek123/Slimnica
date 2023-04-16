@@ -5,8 +5,8 @@
 
     if(isset($_POST['login'])) 
     {
-        $epasts = $_POST['epasts'];
-        $parole = $_POST['parole'];
+        $epasts = $_POST['email'];
+        $parole = $_POST['password'];
 
         $SQL_stmt = "SELECT * FROM admin WHERE epasts = '".$epasts."' AND parole = '".$parole."' ";
 

@@ -1,3 +1,8 @@
+<?php 
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="lv">
 <head>
@@ -41,8 +46,17 @@
                     <a href="" class="">Contact</a>
                 </li>
                 <li>
-                    <a href="" class="">Login</a>
+                    <!-- <a href="pacienti_forms.php" class="">Login</a> -->
+                <?php
+                    if (isset($_SESSION['epasts'])) {
+                        echo "<a href='logout.php' class=''>Logout</a>";
+                    }
+                    else {
+                        echo "<a href='pacienti_forms.php' class='' '>Login</a>";
+                    }
+                ?>
                 </li>
+                
             </ul>
         </nav>
     </header>

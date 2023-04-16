@@ -30,8 +30,6 @@
                 header('location: arsts_login.php?activity=incorrect_user_login_credentials');
                 exit(); 
             }
-            
-        
     
         }
         else
