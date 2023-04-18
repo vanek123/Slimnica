@@ -1,8 +1,8 @@
-<?php 
+<?php
     session_start();
     require_once 'connection.php';
-    
-    
+
+
 // initializing variables
 $name = "";
 $surname = "";
@@ -27,7 +27,7 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
     $confirm_pass = $_POST['confirm_pass'];
 
- 
+
 
     //form validation: ensure that the form is correctly filled...
     //by adding (array_push()) corresponding errors into $errors array
@@ -41,7 +41,7 @@ if (isset($_POST['register'])) {
     if (empty($password)) { array_push($errors, "Password is required");}
     if (empty($confirm_pass)) { array_push($errors, "Password confirm is required");}
 
-    
+
     // first check the database to make sure
     // a user does not already exist with the same username and/or email
     $patient_check_query = "SELECT * FROM pacienti WHERE personas_kods='$personas_kods' OR epasts='$email' OR talrunis='$phone_num' LIMIT 1";
@@ -71,7 +71,7 @@ if (isset($_POST['register'])) {
         array_push($errors, "Wrong phone number format!");
         header("location: pacienti_forms.php?activity=wrong_phone_number_format");
         exit();
-    } elseif (!preg_match('/^[0-10]{11}+$/', $personas_kods)) {
+    } elseif (!preg_match('/^[0-9]{11}+$/', $personas_kods)) {
         array_push($errors, "Wrong personal code format!");
         header("location: pacienti_forms.php?activity=personal_code_wrong_format");
         exit();
@@ -98,7 +98,7 @@ if (isset($_POST['register'])) {
         exit();
     }
 
-   
+
 
 
 
@@ -113,14 +113,14 @@ if (isset($_POST['register'])) {
             $_SESSION['email'] = $email;
             header('location: index.php?activity=success');
             exit();
-        
+
         }
-    
+
 }
 
-    
-    
-else 
+
+
+else
 {
     header('location: index.php?activity=registration_canceled'); //cancel registration
     exit();

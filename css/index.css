@@ -141,8 +141,8 @@ header {
     .nav-bar ul li a {
         margin-bottom: 12px;
     }
-        
-    
+
+
 }
 
 .img-container {
@@ -152,7 +152,7 @@ header {
     overflow: hidden;
     position: relative;
     display: flex;
-    
+
 }
 
 @media only screen and (max-width: 1300px) {
@@ -163,7 +163,7 @@ header {
         width: 120vw;
         object-fit: cover;
       }
-    
+
   }
 
 .img-container img {
@@ -212,7 +212,7 @@ header {
 }
 
 .card2 {
-    
+
     padding: 3%;
     color: #fefefe;
     background-color:#44b0ac;
@@ -388,7 +388,7 @@ header {
 
 .quick_links h3{
     padding: 5%;
-    
+
 }
 
 .quick_line a {
@@ -419,3 +419,16 @@ header {
     padding: 5%;
 }
 
+#appoint-form {
+    display: block;
+    margin: 5%;
+}
+
+#appoint-form input {
+    margin: 5px;
+    border: 3px solid blue;
+    border-radius: 3px;
+    display: block;
+    width: 50%;
+    height: 40px;
+}

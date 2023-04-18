@@ -1,6 +1,6 @@
-<?php 
+<?php
 session_start();
-
+require_once 'doctor_repository.php';
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@ session_start();
                     }
                 ?>
                 </li>
-                
+
             </ul>
         </nav>
     </header>
@@ -89,7 +89,24 @@ session_start();
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
     </div>
-
+    <?php if (isset($_GET['appointment']) && $_GET['appointment'] === 'success'): ?>
+        <div class="success-msg">Paldies par pierakstu</div>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['pacients_id'])): ?>
+    <form action="make-appointment.php" method="POST" id="appoint-form">
+        <input type="hidden" name="patient-id" value="<?= $_SESSION['pacients_id']; ?>">
+        <input type="datetime-local" name="appoint-datetime">
+        <input type="text" name="appoint-comment" placeholder="Comment">
+        <select name="doctor-id">
+            <?php foreach (getAllDoctors() as $doctor): ?>
+                <option value="<?= $doctor['arsts_id'];?>">
+                    <?= $doctor['vards'];?> <?= $doctor['uzvards'];?> - <?= $doctor['specialitate'] ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <input type="submit" value="Reserve appointment">
+    </form>
+    <?php endif; ?>
     <!-- About Us start -->
 
     <section class="about" id="about">
@@ -100,7 +117,7 @@ session_start();
 
             <div class="about_image" alt="">
                 <img src="img/bed.svg">
-            </div> 
+            </div>
 
             <div class="about_content">
                 <h3>we take care of your healthy life</h3>
@@ -110,8 +127,8 @@ session_start();
             </div>
 
         </div>
-        
-    </section>    
+
+    </section>
 
 
     <!-- About Us end -->
@@ -123,9 +140,9 @@ session_start();
     <div class="doctors">
 
     </div>
-    
+
     <!-- Footer -->
-    
+
         <div class="footer">
             <div class="footer_logo">
                 <img src="img/RLS-1.png" alt="">
@@ -133,7 +150,7 @@ session_start();
             <div class="under_logo">
                 <ul>
                     <li>Contact our specialist doctor at any time for any of your aliments</li>
-                </ul> 
+                </ul>
             </div>
             <div class="quick_links">
                 <h3>Quick links</h3>
@@ -158,6 +175,6 @@ session_start();
                 <p>© SIA "Rīgas Lux Slimnīca" | Visas tiesības aizsargātas</p>
             </div>
         </div>
-        
+
 </body>
 </html>
