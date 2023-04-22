@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'doctor_repository.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ require_once 'doctor_repository.php';
                     <a href="" class="active">Home</a>
                 </li>
                 <li>
-                    <a href="" class="">About</a>
+                    <a href="#about" class="">About</a>
                 </li>
                 <li>
                     <a href="" class="">Service</a>
@@ -40,10 +41,25 @@ require_once 'doctor_repository.php';
                     <a href="" class="">Doctor</a>
                 </li>
                 <li>
-                    <a href="" class="">Book</a>
+                    <!-- <a href="#booking" class="">Book</a> -->
+                    <?php
+                    if (isset($_SESSION['epasts'])) {
+                        echo "<a href='#booking' class=''>Book</a>";
+                    }
+                    else {
+                        echo "<a href='pacienti_forms.php' class='' >Book</a>";
+                    }
+                ?>
                 </li>
                 <li>
-                    <a href="" class="">Contact</a>
+                    <a href="#footer" class="">Contact</a>
+                </li>
+                <li>
+                <?php
+                    if (isset($_SESSION['epasts'])) {
+                        echo "<a href='patient_profile.php' class=''>Profile</a>";
+                    }
+                ?>
                 </li>
                 <li>
                     <!-- <a href="pacienti_forms.php" class="">Login</a> -->
@@ -52,7 +68,7 @@ require_once 'doctor_repository.php';
                         echo "<a href='logout.php' class=''>Logout</a>";
                     }
                     else {
-                        echo "<a href='pacienti_forms.php' class='' '>Login</a>";
+                        echo "<a href='pacienti_forms.php' class='' >Login</a>";
                     }
                 ?>
                 </li>
@@ -89,23 +105,36 @@ require_once 'doctor_repository.php';
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
     </div>
-    <?php if (isset($_GET['appointment']) && $_GET['appointment'] === 'success'): ?>
-        <div class="success-msg">Paldies par pierakstu</div>
-    <?php endif; ?>
+    
     <?php if (isset($_SESSION['pacients_id'])): ?>
-    <form action="make-appointment.php" method="POST" id="appoint-form">
+        <section id="booking">
+            <h1 class="heading"> <span>Appointment</span> Booking</h1>
+
+    <form action="make-appointment.php" method="POST">
+        <?php if (isset($_GET['appointment']) && $_GET['appointment'] === 'success'): ?>
+            <div class="success-msg">Paldies par pierakstu!</div>
+        <?php endif; ?>
         <input type="hidden" name="patient-id" value="<?= $_SESSION['pacients_id']; ?>">
-        <input type="datetime-local" name="appoint-datetime">
-        <input type="text" name="appoint-comment" placeholder="Comment">
-        <select name="doctor-id">
+        <label for="appointmentDate">Appointment Date and Time:</label>
+        <input type="datetime-local" name="appoint-datetime" required><br><br>
+
+        <label for="doctor">Doctor:</label>
+        <select name="doctor-id" required>
             <?php foreach (getAllDoctors() as $doctor): ?>
                 <option value="<?= $doctor['arsts_id'];?>">
-                    <?= $doctor['vards'];?> <?= $doctor['uzvards'];?> - <?= $doctor['specialitate'] ?>
+                    <?= $doctor['vards'];?> <?= $doctor['uzvards'];?> - <?= $doctor['specialitate']?>
                 </option>
             <?php endforeach; ?>
-        </select>
+            <!-- Add more doctor options as needed -->
+        </select><br><br>
+
+        <label for="notes">Notes:</label>
+        <textarea name="appoint-comment"></textarea><br><br>
+    
         <input type="submit" value="Reserve appointment">
     </form>
+    </section>
+
     <?php endif; ?>
     <!-- About Us start -->
 
@@ -143,7 +172,7 @@ require_once 'doctor_repository.php';
 
     <!-- Footer -->
 
-        <div class="footer">
+        <div class="footer" id="footer">
             <div class="footer_logo">
                 <img src="img/RLS-1.png" alt="">
             </div>
@@ -168,11 +197,11 @@ require_once 'doctor_repository.php';
                     <li>(111) 222-3333</li>
                     <li>(111) 222-3333</li>
                     <li>rigasluxslimnica@example.com</li>
-                    <li>Lielā džupelnieka iela 27, Rīgas novads, LV-1023</li>
+                    <li>Lielā džupelnieka iela 27, Rīga, LV-1023</li>
                 </ul>
             </div>
             <div class="all_rights_reserved">
-                <p>© SIA "Rīgas Lux Slimnīca" | Visas tiesības aizsargātas</p>
+                <p>© SIA "Rīgas Lux Slimnīca" | All rights reserved</p>
             </div>
         </div>
 
