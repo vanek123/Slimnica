@@ -9,7 +9,7 @@
         
        $hashedPassword = md5($userPassword);//Getting the hash to compare
         
-       $SQL_stmt = "SELECT pacients_id, epasts, parole FROM pacienti WHERE epasts = '".$email."' AND parole = '".$hashedPassword."'";
+       $SQL_stmt = "SELECT pacients_id, vards, uzvards, talrunis, dzimums, dzimdiena, personas_kods, epasts, parole FROM pacienti WHERE epasts = '".$email."' AND parole = '".$hashedPassword."'";
         
        //$result = 0;
         
@@ -22,9 +22,15 @@
         }
     elseif ($row) {
             $_SESSION['pacients_id'] = $row['pacients_id'];
+            $_SESSION['vards'] = $row['vards'];
+            $_SESSION['uzvards'] = $row['uzvards'];
+            $_SESSION['talrunis'] = $row['talrunis'];
+            $_SESSION['dzimums'] = $row['dzimums'];
+            $_SESSION['dzimdiena'] = $row['dzimdiena'];
+            $_SESSION['personas_kods'] = $row['personas_kods']; 
             $_SESSION['epasts'] = $row['epasts'];
 
-        header('location: index.php?activity=login_successful');
+        header('location: index.php?activity=success');
         exit();
         }    
 

@@ -2,6 +2,15 @@
 session_start();
 require_once 'doctor_repository.php';
 
+
+
+if (isset($_SESSION['epasts'])) {
+    $session = $_SESSION['epasts'];
+    $id = "SELECT pacients_id FROM pacienti WHERE epasts = '$session' ";
+    $result = $DBconnection->query($id);
+    $session_id = $result->fetch();
+    $_SESSION['pacients_id'] = $session_id;
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +52,7 @@ require_once 'doctor_repository.php';
                 <li>
                     <!-- <a href="#booking" class="">Book</a> -->
                     <?php
-                    if (isset($_SESSION['epasts'])) {
+                    if (isset($_SESSION['pacients_id'])) {
                         echo "<a href='#booking' class=''>Book</a>";
                     }
                     else {
@@ -56,7 +65,7 @@ require_once 'doctor_repository.php';
                 </li>
                 <li>
                 <?php
-                    if (isset($_SESSION['epasts'])) {
+                    if (isset($_SESSION['pacients_id'])) {
                         echo "<a href='patient_profile.php' class=''>Profile</a>";
                     }
                 ?>
@@ -64,7 +73,7 @@ require_once 'doctor_repository.php';
                 <li>
                     <!-- <a href="pacienti_forms.php" class="">Login</a> -->
                 <?php
-                    if (isset($_SESSION['epasts'])) {
+                    if (isset($_SESSION['pacients_id'])) {
                         echo "<a href='logout.php' class=''>Logout</a>";
                     }
                     else {

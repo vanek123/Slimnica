@@ -110,7 +110,7 @@ if (isset($_POST['register'])) {
             $query = "INSERT INTO pacienti (vards, uzvards, epasts, parole, talrunis, dzimums, dzimdiena, personas_kods)
                   VALUES('$name', '$surname', '$email', '$passwordMD5', '$phone_num', '$gender', '$dob', '$personas_kods')";
             $DBconnection->query($query);
-            $_SESSION['email'] = $email;
+            $_SESSION['epasts'] = $email;
             header('location: index.php?activity=success');
             exit();
 
