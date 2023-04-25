@@ -110,8 +110,14 @@ if (isset($_POST['register'])) {
             $query = "INSERT INTO pacienti (vards, uzvards, epasts, parole, talrunis, dzimums, dzimdiena, personas_kods)
                   VALUES('$name', '$surname', '$email', '$passwordMD5', '$phone_num', '$gender', '$dob', '$personas_kods')";
             $DBconnection->query($query);
+            //$id = "SELECT pacients_id FROM pacienti WHERE epasts = '$email' LIMIT 1 ";
+            //$session_id = $DBconnection->query($id);
+            //$patient_id = $session_id->fetch();
             $_SESSION['epasts'] = $email;
-            header('location: index.php?activity=success');
+            $lastInsertId = $DBconnection->lastInsertId();
+            $_SESSION['pacients_id'] = $lastInsertId;
+            //$_SESSION['pacients_id'] = $patient_id;
+            header('location: index.php?activity=reg_success');
             exit();
 
         }

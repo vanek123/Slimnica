@@ -1,17 +1,23 @@
 <?php
 session_start();
 require 'connection.php';
-if(isset($_SESSION['pacients_id'])) {
-  $patient = $_SESSION['pacients_id'];
 
-$patient_info = $DBconnection->query("SELECT * FROM pacienti WHERE pacients_id = '$patient' ")->fetch();
+$patient = $_SESSION['pacients_id'];
 
-$appoint_doc = $DBconnection->query("SELECT arsti.vards, arsti.uzvards, pieraksti.pieraksta_datetime, arsti.specialitate 
-FROM pieraksti 
-INNER JOIN arsti ON pieraksti.arsts_id = arsti.arsts_id
-WHERE pieraksti.pacients_id = '$patient' ")->fetch();
+if (isset($patient)) {
+  
+  $patient_check_query = "SELECT * FROM pacienti WHERE pacients_id = '$patient'";
+  $patient_query = $DBconnection->query($patient_check_query);
+  $patient_info = $patient_query->fetch();
+
+  $appoint_check_query = "SELECT arsti.vards, arsti.uzvards, pieraksti.pieraksta_datetime, arsti.specialitate 
+  FROM pieraksti 
+  INNER JOIN arsti ON pieraksti.arsts_id = arsti.arsts_id
+  WHERE pieraksti.pacients_id = '$patient' ";
+  $appoint_query = $DBconnection->query($appoint_check_query);
+  $appointment_info = $appoint_query->fetchAll(PDO::FETCH_ASSOC); 
+
 }
-
 
 ?>
 
@@ -57,8 +63,8 @@ WHERE pieraksti.pacients_id = '$patient' ")->fetch();
       <h2>Appointments</h2>
       <ul>
         <li>
-        <?php if($appoint_doc): ?>
-          <?php foreach($appoint_doc as $appoint_info): ?>
+        <?php if($appointment_info): ?>
+          <?php foreach($appointment_info as $appoint_info): ?>
           <p>Doctor: <?= $appoint_info['vards'] . ' ' . $appoint_info['uzvards']; ?> </p>
           <p>Date and Time: <?= $appoint_info['pieraksta_datetime']; ?> </p>
           <p>Specialty: <?= $appoint_info['specialitate']; ?> </p>

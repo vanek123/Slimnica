@@ -2,15 +2,14 @@
 session_start();
 require_once 'doctor_repository.php';
 
+/*$patient = $_SESSION['pacients_id'];
 
+if (is_array($patient)) {
+    echo 'that is array';// handle the array data accordingly
+  } else {
+    echo $patient; // assuming it's a string or other scalar value
+  } */
 
-if (isset($_SESSION['epasts'])) {
-    $session = $_SESSION['epasts'];
-    $id = "SELECT pacients_id FROM pacienti WHERE epasts = '$session' ";
-    $result = $DBconnection->query($id);
-    $session_id = $result->fetch();
-    $_SESSION['pacients_id'] = $session_id;
-}
 ?>
 
 <!DOCTYPE html>
