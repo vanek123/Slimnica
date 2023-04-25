@@ -20,9 +20,8 @@
         elseif ($row) {
                 $_SESSION['arsts_id'] = $row['arsts_id'];
                 $_SESSION['epasts'] = $row['epasts'];
-                $_SESSION['parole'] = $row['parole'];
     
-            header('location: doctor_logged.html?activity=successful');
+            header('location: doctor_profile.php?activity=successful');
             exit();
             }    
     
