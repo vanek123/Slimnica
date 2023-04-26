@@ -49,8 +49,6 @@ if(isset($_POST['submit'])) {
     </nav>
 
     <div class="container">
-        
-    <?php include 'message.php'; ?>
 
         <div class="text-center mb-4">
             <h3>Update Doctor</h3>
