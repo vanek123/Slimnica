@@ -43,11 +43,41 @@
                 <th>Patient:</th>
                 <th>Treatment Plan</th>
             </tr>
-            <?php $row = "SELECT * FROM pieraksti";
-            $p_id = $DBconnection->query($row);
-            $row = $p_id->fetch();
-            $id = $row['pieraksts_id']; ?>
+
+            <?php
+/*
+            $SQL = "SELECT * FROM `arsti` ";
+            $result = $DBconnection->query($SQL);
+            if($result) {
+                while($row = $result->fetch()) {
+                    $id = $row['arsts_id'];
+                    $vards = $row['vards'];
+                    $uzvards = $row['uzvards'];
+                    $epasts = $row['epasts'];
+                    $parole = $row['parole'];
+                    $talrunis = $row['talrunis'];
+                    $specialitate = $row['specialitate'];
+                    echo '<tr>
+                            <th scope="row">'.$id.'</th>
+                            <td>'.$vards.'</td>
+                            <td>'.$uzvards.'</td>
+                            <td>'.$epasts.'</td>
+                            <td>'.$parole.'</td>
+                            <td>'.$talrunis.'</td>
+                            <td>'.$specialitate.'</td>
+                            <td> 
+                            <button class="btn btn-primary"><a href="update_doctor.php?updateid='.$id.'" class="text-light">Update</a></button>
+                            <button class="btn btn-danger"><a href="delete_doctor.php?deleteid='.$id.'" class="text-light">Delete</a></button>
+                            </td>
+                           </tr> ';
+                }
+            }
+*/
+            ?>
+            
+        
         <?php if($appointment): ?>
+            <?php  ?>
             <?php foreach($appointment as $app): ?>
             <tr>
                 <td><?= $app['pieraksts_id']; ?></td>
@@ -55,11 +85,12 @@
                 <td><?= $app['pacients_id']; ?></td>
                 <td><?= $app['vards'] . ' ' . $app['uzvards']; ?></td>
                 <td>
-                    <?php echo '<button><a href="treatment.php?updateid='.$id.'">ADD TREATMENT</a></button>' ?>
+                    <?= '<button><a href="treatment.php?updateid='.$app['pieraksts_id'].'">ADD TREATMENT</a></button>' ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>
+        
            
             <!-- Additional rows for appointments go here -->
         </table>

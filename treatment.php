@@ -26,12 +26,15 @@ if(isset($_POST['submit'])) {
     $result = $DBconnection->query($sql);
 
     if($result) {
-        header('location: doctor_profile.php?activity=updated_successfully');
+        header('location: doctor_profile.php?activity=added_successfully');
     }
     else {
         echo "Exception error: " . $ex->getMessage();// for testing purposes.
         die($ex->getMessage());
     }
+}
+elseif(isset($_POST['cancel'])) {
+    header('location: doctor_profile.php?activity=canceled');
 }
 ?>
 
@@ -84,7 +87,7 @@ if(isset($_POST['submit'])) {
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">Treatment Plan:</label>
-                    <input type="text" class="form-control" name="treatment_plan" placeholder="" onkeypress="this.value=this.value.substring(0,7)">
+                    <input type="text" class="form-control" name="treatment_plan" placeholder="" onkeypress="this.value=this.value.substring(0,499)">
                 </div>
             </div>
 

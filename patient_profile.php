@@ -38,9 +38,9 @@ if (isset($patient)) {
       <ul>
         <li><a href="index.php?activity=home">Back</a></li>
         <li><a href="#personal-info">Personal Information</a></li>
-        <li><a href="#medical-history">Medical History</a></li>
+        <li><a href="#medical-records">Medical Records</a></li>
         <li><a href="#appointments">Appointments</a></li>
-        <li><a href="#appointments">Log out</a></li>
+        <li><a href="logout.php">Log out</a></li>
       </ul>
     </nav>
     <section id="personal-info">
@@ -53,8 +53,8 @@ if (isset($patient)) {
       <p>Contact Number: <?= $patient_info['talrunis']; ?></p>
       <p>Email: <?= $patient_info['epasts']; ?></p>
     </section>
-    <section id="medical-history">
-      <h2>Medical History</h2>
+    <section id="medical-records">
+      <h2>Medical Records</h2>
       <p>Allergies: None</p>
       <p>Medical Conditions: Hypertension</p>
       <p>Medications: Lisinopril</p>
@@ -62,15 +62,16 @@ if (isset($patient)) {
     <section id="appointments">
       <h2>Appointments</h2>
       <ul>
-        <li>
-        <?php if($appointment_info): ?>
+        
+      <?php if($appointment_info): ?>
           <?php foreach($appointment_info as $appoint_info): ?>
+        <li>
           <p>Doctor: <?= $appoint_info['vards'] . ' ' . $appoint_info['uzvards']; ?> </p>
           <p>Date and Time: <?= $appoint_info['pieraksta_datetime']; ?> </p>
           <p>Specialty: <?= $appoint_info['specialitate']; ?> </p>
-          <?php endforeach; ?>
-        <?php endif;?>
         </li>
+        <?php endforeach; ?>
+      <?php endif;?>
       </ul>
     </section>
   </body>
