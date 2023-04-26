@@ -5,8 +5,8 @@
 
     if(isset($_POST['login'])) 
     {
-        $epasts = $_POST['email'];
-        $parole = $_POST['password'];
+        $epasts = $_POST['epasts'];
+        $parole = $_POST['parole'];
 
         $SQL_stmt = "SELECT * FROM admin WHERE epasts = '".$epasts."' AND parole = '".$parole."' ";
 
@@ -20,7 +20,6 @@
         elseif ($row) {
                 $_SESSION['admin_id'] = $row['admin_id'];
                 $_SESSION['epasts'] = $row['epasts'];
-                $_SESSION['parole'] = $row['parole'];
     
             header('location: admin_panel.php?activity=successful');
             exit();
