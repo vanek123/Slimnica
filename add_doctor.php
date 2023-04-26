@@ -53,7 +53,6 @@
                 VALUES ('$name', '$surname', '$email', '$password', '$phone_number', '$specialty')";
             $DBconnection->query($query);
             $_SESSION['email'] = $email;
-            $_SESSION['message'] = 'Doctor added successfuly!';
             header("location: admin_panel.php?activity=new_record_created_succesfuly");
             exit();
         }

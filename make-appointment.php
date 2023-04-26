@@ -10,14 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $appointComment = $_POST['appoint-comment'];
     $doctorId = $_POST['doctor-id'];
 
-    //form validation: ensure that the form is correctly filled...
-    //by adding (array_push()) corresponding errors into $errors array
-    if (empty($patientId)) { array_push($errors, "Name is required");}
-    if (empty($appointDateTime)) { array_push($errors, "Surname is required");}
-    if (empty($appointComment)) { array_push($errors, "Personal code is required");}
-    if (empty($doctorId)) { array_push($errors, "Dob is required");}
-
-
     if (empty($patientId) || empty($appointDateTime) || empty($appointComment) || empty($doctorId)) {
         array_push($errors, "The fields are empty!");
         header("location: pacienti_forms.php?activity=empty");

@@ -4,10 +4,13 @@
     $arsts_id = $_SESSION['arsts_id'];
     $doc = $DBconnection->query("SELECT vards, uzvards FROM arsti WHERE arsts_id = '$arsts_id' ") -> fetch();
 
-    $appointment = $DBconnection->query("SELECT pieraksti.pieraksta_datetime, pacienti.vards, pacienti.uzvards FROM pieraksti
-    INNER JOIN pacienti ON pieraksti.pacients_id = pacienti.pacients_id
-    INNER JOIN arsti ON pieraksti.arsts_id = arsti.arsts_id 
-    WHERE pieraksti.arsts_id = '$arsts_id' ") -> fetchAll(PDO::FETCH_ASSOC);
+    $appointment = $DBconnection->query("SELECT pac.pacients_id, pie.pieraksts_id, pie.pieraksta_datetime, pac.vards, pac.uzvards 
+    FROM pieraksti AS pie
+    INNER JOIN pacienti AS pac ON pac.pacients_id = pie.pacients_id
+    INNER JOIN arsti as a ON a.arsts_id = pie.arsts_id
+    WHERE pie.arsts_id = '$arsts_id' ")->fetchAll(PDO::FETCH_ASSOC);
+
+    
 
 ?>
 <!DOCTYPE html>
@@ -34,33 +37,30 @@
         <h3>Appointments</h3>
         <table>
             <tr>
+                <th> Appointment ID </th>
                 <th>Date and Time:</th>
+                <th> Patient ID </th>
                 <th>Patient:</th>
-                <th>Reason for Visit</th>
                 <th>Treatment Plan</th>
             </tr>
+            <?php $row = "SELECT * FROM pieraksti";
+            $p_id = $DBconnection->query($row);
+            $row = $p_id->fetch();
+            $id = $row['pieraksts_id']; ?>
         <?php if($appointment): ?>
             <?php foreach($appointment as $app): ?>
             <tr>
+                <td><?= $app['pieraksts_id']; ?></td>
                 <td><?= $app['pieraksta_datetime']; ?></td>
+                <td><?= $app['pacients_id']; ?></td>
                 <td><?= $app['vards'] . ' ' . $app['uzvards']; ?></td>
                 <td>
-                    <textarea></textarea>
-                </td>
-                <td>
-                    <textarea></textarea>
+                    <?php echo '<button><a href="treatment.php?updateid='.$id.'">ADD TREATMENT</a></button>' ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>
-            <tr>
-                <td>April 26, 2023</td>
-                <td>Jane Doe</td>
-                <td>Shortness of breath</td>
-                <td>
-                    <textarea></textarea>
-                </td>
-            </tr>
+           
             <!-- Additional rows for appointments go here -->
         </table>
     </section>
