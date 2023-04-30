@@ -74,7 +74,7 @@ if(isset($_POST['submit'])) {
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">E-mail:</label>
-                    <input type="text" class="form-control" name="email" placeholder="" value=<?php echo $surname;?>>
+                    <input type="text" class="form-control" name="email" placeholder="" value=<?php echo $email;?>>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])) {
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">Password:</label>
-                    <input type="text" class="form-control" name="password" placeholder="">
+                    <input type="password" class="form-control" name="password" placeholder="">
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 <?php
     include 'connection.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +15,9 @@
     <link rel="stylesheet" href="css/admin_panel.css">
 </head>
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #4070f4">
+    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #4070f4; color: white;">
         Hello, Admin!
+        <button><a href="logout.php">Logout</a></button>
     </nav>
     <div class="container">
         <button class="btn btn-primary my-2"><a href="add_doctor_form.php" class="text-light">Add doctor</a></button>

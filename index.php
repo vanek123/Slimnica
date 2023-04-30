@@ -70,6 +70,11 @@ if (is_array($patient)) {
                 ?>
                 </li>
                 <li>
+                    <?php if (isset($_SESSION['pacients_id'])): ?> 
+                        <p class=''>Hello, <?= $_SESSION['vards']; ?> <?= $_SESSION['uzvards']; ?> </p>
+                    <?php endif; ?>
+                </li>
+                <li>
                     <!-- <a href="pacienti_forms.php" class="">Login</a> -->
                 <?php
                     if (isset($_SESSION['pacients_id'])) {
@@ -186,7 +191,7 @@ if (is_array($patient)) {
             </div>
             <div class="under_logo">
                 <ul>
-                    <li>Contact our specialist doctor at any time for any of your aliments</li>
+                    <li>Contact our specialist doctor at any time</li>
                 </ul>
             </div>
             <div class="quick_links">

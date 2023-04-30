@@ -36,7 +36,7 @@
             array_push($errors, "Wrong phone number format!");
             header("location: add_doctor_form.php?activity=wrong_last_name_format");
             exit();
-        } elseif (!preg_match('/^[0-9]{8}+$/', $phone_num)) {
+        } elseif (!preg_match('/^[0-9]{8}+$/', $phone_number)) {
             array_push($errors, "Wrong phone number format!");
             header("location: add_doctor_form.php?activity=wrong_phone_number_format");
             exit();

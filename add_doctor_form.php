@@ -10,15 +10,10 @@
     <link rel="stylesheet" href="css/add_doctor_form.css">
 </head>
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #4070f4">
-        Hello, Admin!
-    </nav>
 
     <div class="container">
-        
-    <?php include 'message.php'; ?>
 
-        <div class="text-center mb-4">
+        <div class="text-center mb-4 my-5">
             <h3>Add New Doctor</h3>
             <p class="text-muted">Complete the form below to add a new doctor</p>
         </div>
