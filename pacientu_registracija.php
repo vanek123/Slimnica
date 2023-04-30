@@ -94,7 +94,7 @@ if (isset($_POST['register'])) {
         exit();
     } elseif (time() < strtotime('+18 years', strtotime($dob))) {
         array_push($errors, "Not 18+ years!");
-        header("location: pacienti_forms.php?activity=age");
+        header("location: pacienti_forms.php?activity=age_not_18");
         exit();
     }
 

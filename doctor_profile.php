@@ -42,13 +42,11 @@
                 <th>Treatment Plan</th>
             </tr>
 
-        <?php 
-        $med_rec = $DBconnection->query("SELECT diagnoze, arstesanas_plans, receptes FROM med_ieraksti WHERE arsts_id = '$arsts_id'")->fetch();
-        ?>
-              
-        <?php if($appointment): ?>
-            <?php  ?>
-            <?php foreach($appointment as $app): ?>
+            <?php 
+    if($appointment): 
+        foreach($appointment as $app):
+            $med_rec = $DBconnection->query("SELECT diagnoze, arstesanas_plans, receptes FROM med_ieraksti WHERE pieraksts_id = '{$app['pieraksts_id']}'")->fetch();
+?>
             <tr>
                 <td><?= $app['pieraksts_id']; ?></td>
                 <td><?= $app['pieraksta_datetime']; ?></td>
@@ -59,11 +57,14 @@
                     <td><?= $med_rec['arstesanas_plans']; ?></td>
                     <td><?= $med_rec['receptes']; ?></td>
                 <?php else: ?>
-                <td><button><a href="treatment.php?updateid=<?= $app['pieraksts_id']; ?>">ADD TREATMENT</a></button></td>
+                    <td><button><a href="treatment.php?updateid=<?= $app['pieraksts_id']; ?>">ADD TREATMENT</a></button></td>
                 <?php endif; ?>
             </tr>
-            <?php endforeach; ?>
-        <?php endif; ?>
+<?php 
+        endforeach; 
+    endif; 
+?>
+
         
            
             <!-- Additional rows for appointments go here -->
