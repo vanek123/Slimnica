@@ -98,11 +98,6 @@ if (isset($_POST['register'])) {
         exit();
     }
 
-
-
-
-
-
     //FInally, register user if there are no earrors in the form
         if (COUNT($errors) === 0) {
             $passwordMD5 = md5($password); //encrypt the password beofre saving in the database

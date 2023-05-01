@@ -24,20 +24,14 @@
             header('location: admin_panel.php?activity=successful');
             exit();
             }    
-    
             else {
                 header('location: admin_login.php?activity=incorrect_user_login_credentials');
                 exit(); 
             }
-            
-        
-    
         }
         else
         {
             header('location: admin_login.php?activity=username_or_password_not_set');
             exit();
         }
-    
-
 ?>

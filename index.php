@@ -1,14 +1,12 @@
 <?php
 session_start();
 require_once 'doctor_repository.php';
+if(isset($_SESSION['pacients_id'])) {
+    $patient_id = $_SESSION['pacients_id'];
+    $loggedIn = $DBconnection->query("SELECT * FROM pacienti WHERE pacients_id = '$patient_id' ")->fetch();   
+}
 
-/*$patient = $_SESSION['pacients_id'];
 
-if (is_array($patient)) {
-    echo 'that is array';// handle the array data accordingly
-  } else {
-    echo $patient; // assuming it's a string or other scalar value
-  } */
 
 ?>
 
@@ -71,7 +69,7 @@ if (is_array($patient)) {
                 </li>
                 <li>
                     <?php if (isset($_SESSION['pacients_id'])): ?> 
-                        <p class=''>Hello, <?= $_SESSION['vards']; ?> <?= $_SESSION['uzvards']; ?> </p>
+                        <p class=''>Hello, <?= $loggedIn['vards']; ?> <?= $loggedIn['uzvards']; ?> </p>
                     <?php endif; ?>
                 </li>
                 <li>

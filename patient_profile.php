@@ -17,6 +17,12 @@ if (isset($patient)) {
   $appoint_query = $DBconnection->query($appoint_check_query);
   $appointment_info = $appoint_query->fetchAll(PDO::FETCH_ASSOC); 
 
+  $med = $DBconnection->query("SELECT mi.diagnoze, mi.arstesanas_plans, mi.receptes, p.pieraksta_datetime, a.vards, a.uzvards, a.specialitate
+  FROM med_ieraksti AS mi
+  INNER JOIN pieraksti AS p ON mi.pieraksts_id = p.pieraksts_id
+  INNER JOIN pacienti AS pac ON mi.pacients_id = pac.pacients_id
+  INNER JOIN arsti AS a ON mi.arsts_id = a.arsts_id
+  WHERE mi.pacients_id = '$patient'")->fetchAll(PDO::FETCH_ASSOC);
 }
 
 ?>
@@ -55,9 +61,17 @@ if (isset($patient)) {
     </section>
     <section id="medical-records">
       <h2>Medical Records</h2>
-      <p>Allergies: None</p>
-      <p>Medical Conditions: Hypertension</p>
-      <p>Medications: Lisinopril</p>
+      <?php if($med): ?>
+        <?php foreach($med as $record): ?>
+      <p>Doctor: <?= $record['vards'];?> <?= $record['uzvards'];?></p>
+      <p>Specialty: <?= $record['specialitate'];?></p>
+      <p>Appointment date and time: <?= $record['pieraksta_datetime']; ?> </p>    
+      <p>Diagnosis: <?= $record['diagnoze']; ?></p>
+      <p>Treatment plan: <?= $record['arstesanas_plans']; ?> </p>
+      <p>Prescriptions: <?= $record['receptes']; ?> </p>
+      <br>
+        <?php endforeach;?>
+      <?php endif; ?>
     </section>
     <section id="appointments">
       <h2>Appointments</h2>

@@ -39,7 +39,10 @@
                 <th>Date and Time:</th>
                 <th> Patient ID </th>
                 <th>Patient:</th>
+                <th>Diagnosis</th>
                 <th>Treatment Plan</th>
+                <th>Prescription</th>
+                <th>Operations</th>
             </tr>
 
             <?php 
@@ -56,7 +59,14 @@
                     <td><?= $med_rec['diagnoze']; ?></td>
                     <td><?= $med_rec['arstesanas_plans']; ?></td>
                     <td><?= $med_rec['receptes']; ?></td>
+                    <td><button><a href="treatment.php?updateid=<?= $app['pieraksts_id']; ?>">UPDATE TREATMENT</a></button>
+                    <button><a href="treatment.php?updateid=<?= $app['pieraksts_id']; ?>">DELETE TREATMENT</a></button>
+                    </td>
+                    
                 <?php else: ?>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td><button><a href="treatment.php?updateid=<?= $app['pieraksts_id']; ?>">ADD TREATMENT</a></button></td>
                 <?php endif; ?>
             </tr>

@@ -10,13 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $appointComment = $_POST['appoint-comment'];
     $doctorId = $_POST['doctor-id'];
 
-    if (empty($patientId) || empty($appointDateTime) || empty($appointComment) || empty($doctorId)) {
+    if (empty($patientId) || empty($appointDateTime) || empty($doctorId)) {
         array_push($errors, "The fields are empty!");
-        header("location: pacienti_forms.php?activity=empty");
+        header("location: index.php?activity=empty");
         exit();
-    } elseif (!preg_match("/^([a-zA-Z0-9' ]+)$/", $appointComment)) {
+    } elseif (!empty($appointComment)) {
+        if (!preg_match("/^([a-zA-Z0-9' ]+)$/", $appointComment))
         array_push($errors, "Comment can contain only letter ands digits!");
-        header("location: pacienti_forms.php?activity=wrong_comment_format");
+        header("location: index.php?activity=wrong_comment_format");
         exit();
     }
 
