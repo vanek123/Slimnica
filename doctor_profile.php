@@ -35,9 +35,9 @@
         <h3>Appointments</h3>
         <table>
             <tr>
-                <th> Appointment ID </th>
+                <th>Appointment ID </th>
                 <th>Date and Time:</th>
-                <th> Patient ID </th>
+                <th>Patient ID </th>
                 <th>Patient:</th>
                 <th>Diagnosis</th>
                 <th>Treatment Plan</th>
@@ -59,15 +59,15 @@
                     <td><?= $med_rec['diagnoze']; ?></td>
                     <td><?= $med_rec['arstesanas_plans']; ?></td>
                     <td><?= $med_rec['receptes']; ?></td>
-                    <td><button><a href="treatment.php?updateid=<?= $app['pieraksts_id']; ?>">UPDATE TREATMENT</a></button>
-                    <button><a href="treatment.php?updateid=<?= $app['pieraksts_id']; ?>">DELETE TREATMENT</a></button>
+                    <td><button><a href="update_treatment.php?updateid=<?= $app['pieraksts_id']; ?>">UPDATE TREATMENT</a></button>
+                    <button><a href="delete_treatment.php?deleteid=<?= $app['pieraksts_id']; ?>">DELETE TREATMENT</a></button>
                     </td>
                     
                 <?php else: ?>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><button><a href="treatment.php?updateid=<?= $app['pieraksts_id']; ?>">ADD TREATMENT</a></button></td>
+                    <td><button><a href="treatment.php?addid=<?= $app['pieraksts_id']; ?>">ADD TREATMENT</a></button></td>
                 <?php endif; ?>
             </tr>
 <?php 
