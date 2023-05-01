@@ -59,7 +59,7 @@
 
         <div class="text-center mb-4 my-4">
             <h3>Add New Treatment</h3>
-            <p class="text-muted">Complete the form below to update a new treatment for a patient </p>
+            <p class="text-muted">Complete the form below to update a treatment for patient </p>
         </div>
     
 
