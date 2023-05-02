@@ -21,7 +21,7 @@
                 $_SESSION['arsts_id'] = $row['arsts_id'];
                 $_SESSION['epasts'] = $row['epasts'];
     
-            header('location: doctor_profile.php?activity=successful');
+            header('location: doctor_profile.php?activity=login_success');
             exit();
             }    
     
@@ -37,5 +37,6 @@
             exit();
         }
     
+
 
 ?>

@@ -25,7 +25,7 @@
 
     <div class="container">
 
-        <?php include 'admin_message.php'; ?>
+        <?php include 'message.php'; ?>
 
         <button class="btn btn-primary my-2"><a href="add_doctor_form.php" class="text-light">Add doctor</a></button>
         <table class="table">

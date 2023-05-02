@@ -126,5 +126,7 @@
         </div>
     </div>
 
+    <?php include 'message.php';?>
+
 </body>
 </html>

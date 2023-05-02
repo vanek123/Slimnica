@@ -7,7 +7,7 @@
        $result = $DBconnection->query($sql);
        if($result) {
            echo "Deleted successfully";
-           header('location: doctor_profile.php?activity=deleted_successfully');
+           header('location: doctor_profile.php?activity=tr_deleted_successfully');
        }
        else {
            echo "Exception error: " . $ex->getMessage();

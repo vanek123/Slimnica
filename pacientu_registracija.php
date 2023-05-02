@@ -51,7 +51,7 @@ if (isset($_POST['register'])) {
 
     if (empty($name) || empty($surname) || empty($personas_kods) || empty($dob) || empty($gender) || empty($email) || empty($phone_num) || empty($password) || empty($confirm_pass)) {
         array_push($errors, "The fields are empty!");
-        header("location: pacienti_forms.php?activity=empty");
+        header("location: pacienti_forms.php?activity=reg_empty");
         exit();
     } elseif ($patient) {
         if ($patient['personas_kods'] === $personas_kods || $patient['epasts'] === $email || $patient['talrunis'] === $phone_num) {

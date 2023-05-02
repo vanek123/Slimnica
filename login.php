@@ -21,7 +21,7 @@
                 $_SESSION['admin_id'] = $row['admin_id'];
                 $_SESSION['epasts'] = $row['epasts'];
     
-            header('location: admin_panel.php?activity=successful');
+            header('location: admin_panel.php?activity=login_success');
             exit();
             }    
             else {

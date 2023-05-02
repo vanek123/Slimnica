@@ -44,3 +44,7 @@ window.onload = () => {
     const personalCode = document.getElementById('personalCode');
     personalCode.onpaste = e => e.preventDefault();
    };
+
+   function closeAlert() {
+    document.getElementById("alert").style.display = "none";
+  }

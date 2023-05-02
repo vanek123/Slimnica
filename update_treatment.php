@@ -30,7 +30,7 @@
         $result = $DBconnection->query($sql);
     
         if($result) {
-            header('location: doctor_profile.php?activity=updated_successfully');
+            header('location: doctor_profile.php?activity=tr_updated_successfully');
         }
         else {
             echo "Exception error: " . $ex->getMessage();// for testing purposes.

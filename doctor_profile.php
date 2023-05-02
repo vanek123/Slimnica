@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Profile</title>
     <link rel="stylesheet" href="css/doctor_profile.css">
+    <script defer src='js/alert.js'></script>
 </head>
 <body>
     <header>
@@ -32,6 +33,9 @@
         </ul>
     </nav>
     <section id="appointments">
+
+    <?php include 'message.php';?>   
+
         <h3>Appointments</h3>
         <table>
             <tr>
@@ -75,7 +79,7 @@
     endif; 
 ?>
 
-        
+    
            
             <!-- Additional rows for appointments go here -->
         </table>
@@ -83,5 +87,8 @@
     <footer>
         <p>&copy; 2023. All rights reserved.</p>
     </footer>
+
+     
+    
 </body>
 </html>

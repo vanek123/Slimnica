@@ -30,7 +30,7 @@
             $_SESSION['personas_kods'] = $row['personas_kods']; 
             $_SESSION['epasts'] = $row['epasts'];
 
-        header('location: index.php?activity=success');
+        header('location: index.php?activity=login_success');
         exit();
         }    
 

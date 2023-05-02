@@ -4,3 +4,7 @@ hamburger.onclick = function() {
     navBar = document.querySelector(".nav-bar");
     navBar.classList.toggle("active");
 }
+
+function closeAlert() {
+    document.getElementById("alert").style.display = "none";
+  }

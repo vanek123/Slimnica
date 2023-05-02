@@ -5,9 +5,6 @@ if(isset($_SESSION['pacients_id'])) {
     $patient_id = $_SESSION['pacients_id'];
     $loggedIn = $DBconnection->query("SELECT * FROM pacienti WHERE pacients_id = '$patient_id' ")->fetch();   
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -215,6 +212,8 @@ if(isset($_SESSION['pacients_id'])) {
                 <p>© SIA "Rīgas Lux Slimnīca" | All rights reserved</p>
             </div>
         </div>
+
+        <?php include 'message.php'; ?>
 
 </body>
 </html>

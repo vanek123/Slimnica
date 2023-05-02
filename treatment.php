@@ -26,7 +26,7 @@ if(isset($_POST['submit'])) {
     $result = $DBconnection->query($sql);
 
     if($result) {
-        header('location: doctor_profile.php?activity=added_successfully');
+        header('location: doctor_profile.php?activity=tr_added_successfully');
     }
     else {
         echo "Exception error: " . $ex->getMessage();// for testing purposes.
