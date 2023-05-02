@@ -12,6 +12,7 @@
     <title>Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script defer src="js/alert.js"></script>
     <link rel="stylesheet" href="css/admin_panel.css">
 </head>
 <body>
@@ -19,7 +20,13 @@
         Hello, Admin!
         <button><a href="logout.php">Logout</a></button>
     </nav>
+    
+    
+
     <div class="container">
+
+        <?php include 'admin_message.php'; ?>
+
         <button class="btn btn-primary my-2"><a href="add_doctor_form.php" class="text-light">Add doctor</a></button>
         <table class="table">
             <thead>

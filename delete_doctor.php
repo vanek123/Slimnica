@@ -7,7 +7,7 @@ if(isset($_GET['deleteid'])) {
     $result = $DBconnection->query($sql);
     if($result) {
         echo "Deleted successfully";
-        header('location: admin_panel.php?activity=deleted_successfully');
+        header('location: admin_panel.php?activity=doctor_deleted_successfully');
     }
     else {
         echo "Exception error: " . $ex->getMessage();

@@ -22,7 +22,7 @@ if(isset($_POST['submit'])) {
     $result = $DBconnection->query($sql);
 
     if($result) {
-        header('location: admin_panel.php?activity=updated_successfully');
+        header('location: admin_panel.php?activity=doctor_updated_successfully');
     }
     else {
         echo "Exception error: " . $ex->getMessage();// for testing purposes.

@@ -2,7 +2,7 @@
 
 require_once 'doctor_repository.php';
 
-//REGISTER USER
+//APPOINTMENT
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
     $patientId = $_POST['patient-id'];
@@ -10,10 +10,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $appointComment = $_POST['appoint-comment'];
     $doctorId = $_POST['doctor-id'];
 
+    $available = "SELECT pieraksta_datetime, arsts_id FROM pieraksti
+    WHERE pieraksta_datetime = '$appointDateTime' AND arsts_id = $doctorId "; 
+    $sql = $DBconnection->query($available);
+    $rezultats = $sql->fetch();
+
     if (empty($patientId) || empty($appointDateTime) || empty($doctorId)) {
         array_push($errors, "The fields are empty!");
         header("location: index.php?activity=empty");
         exit();
+    } elseif ($rezultats) {
+        if ($rezultats['pieraksta_datetime'] === $appointDateTime && $rezultats['arsts_id'] === $doctorId) {
+            array_push($errors, "This time is taken!");
+            header("location: index.php?activity=appointment_time_is_taken");
+            exit();
+        }
     } elseif (!empty($appointComment)) {
         if (!preg_match("/^([a-zA-Z0-9' ]+)$/", $appointComment))
         array_push($errors, "Comment can contain only letter ands digits!");
@@ -21,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    //FInally, register user if there are no earrors in the form
+    //FInally, make appointment if there are no
     if (COUNT($errors) === 0) {
         makeAppointment($patientId, $appointDateTime, $appointComment, $doctorId);
         header('location: index.php?appointment=success');
