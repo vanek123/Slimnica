@@ -10,7 +10,7 @@ if (isset($patient)) {
   $patient_query = $DBconnection->query($patient_check_query);
   $patient_info = $patient_query->fetch();
 
-  $appoint_check_query = "SELECT arsti.vards, arsti.uzvards, pieraksti.pieraksta_datetime, arsti.specialitate 
+  $appoint_check_query = "SELECT pieraksti.pieraksts_id, arsti.vards, arsti.uzvards, pieraksti.pieraksta_datetime, arsti.specialitate 
   FROM pieraksti 
   INNER JOIN arsti ON pieraksti.arsts_id = arsti.arsts_id
   WHERE pieraksti.pacients_id = '$patient' ";
@@ -23,6 +23,7 @@ if (isset($patient)) {
   INNER JOIN pacienti AS pac ON mi.pacients_id = pac.pacients_id
   INNER JOIN arsti AS a ON mi.arsts_id = a.arsts_id
   WHERE mi.pacients_id = '$patient'")->fetchAll(PDO::FETCH_ASSOC);
+
 }
 
 ?>
@@ -35,6 +36,7 @@ if (isset($patient)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="css/patient_profile.css">
+    <script defer src="js/alert.js"></script>
 </head>
 <body>
     <header>
@@ -73,6 +75,9 @@ if (isset($patient)) {
         <?php endforeach;?>
       <?php endif; ?>
     </section>
+
+    <?php include 'message.php';?>
+
     <section id="appointments">
       <h2>Appointments</h2>
       <ul>
@@ -83,6 +88,7 @@ if (isset($patient)) {
           <p>Doctor: <?= $appoint_info['vards'] . ' ' . $appoint_info['uzvards']; ?> </p>
           <p>Date and Time: <?= $appoint_info['pieraksta_datetime']; ?> </p>
           <p>Specialty: <?= $appoint_info['specialitate']; ?> </p>
+          <button><a href="cancel_appointment.php?cancelid=<?= $appoint_info['pieraksts_id']; ?>">CANCEL</a></button>
         </li>
         <?php endforeach; ?>
       <?php endif;?>

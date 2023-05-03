@@ -86,6 +86,12 @@ else {
             Fill in all the fields!
         </div>";
     }
+    elseif ($activityCheck == "app_deleted_successfully") {
+        echo "<div id='alert' class='alert'>
+            <span class='closebtn' onclick='closeAlert()'>&times;</span>
+            Appointment deleted successfully!
+        </div>";
+    }
     elseif ($activityCheck == "tr_added_successfully") {
         echo "<div id='alert' class='alert_login'>
             <span class='closebtn' onclick='closeAlert()'>&times;</span>
